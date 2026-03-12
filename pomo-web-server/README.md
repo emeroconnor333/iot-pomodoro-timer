@@ -1,0 +1,6 @@
+- wire the arduino to the 4 digit display
+- send the 4 digit display code to the arduino
+- change the port of the arduino in server.js
+- run `npm install serialport express`
+- run `npm install serialport express`
+- open `localhost:3000`
