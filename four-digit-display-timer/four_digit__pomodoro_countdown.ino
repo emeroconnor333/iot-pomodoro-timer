@@ -4,10 +4,10 @@
 SevSeg sevseg;
 
 // ---- Pomodoro Timer Settings ----
-const int WORK_MINUTES        = 25;
+const int WORK_MINUTES = 25;
 const int SHORT_BREAK_MINUTES = 5;
-const int LONG_BREAK_MINUTES  = 15;
-const int ROUNDS_BEFORE_LONG  = 4;
+const int LONG_BREAK_MINUTES = 15;
+const int ROUNDS_BEFORE_LONG = 4;
 // ---------------------------------
 
 int minutes = WORK_MINUTES;
@@ -18,9 +18,11 @@ bool isWorkSession = true;
 int roundCount = 0;
 
 void setup() {
+  Serial.begin(9600);
+  delay(100);
   byte numDigits = 4;
-  byte digitPins[] = {12, 9, 8, 6};
-  byte segmentPins[] = {11, 7, 4, 2, 1, 10, 5, 3};
+  byte digitPins[] = { 12, 9, 8, 6 };
+  byte segmentPins[] = { 11, 7, 4, 2, 13, 10, 5, 3 };
 
   bool resistorsOnSegments = false;
   bool updateWithDelays = false;
@@ -58,6 +60,10 @@ void loop() {
         seconds--;
       }
     }
+    Serial.print(minutes);
+    Serial.print(":");
+    if (seconds < 10) Serial.print("0");
+    Serial.println(seconds);
   }
 
   int displayNum = minutes * 100 + seconds;
